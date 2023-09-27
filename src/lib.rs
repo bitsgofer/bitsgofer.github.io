@@ -11,9 +11,9 @@ impl FromStr for DocumentType {
 
     fn from_str(input: &str) -> Result<DocumentType, Self::Err> {
         match input.to_lowercase().as_str() {
-            "markdown"  => Ok(DocumentType::Markdown),
-            "googledoc"  => Ok(DocumentType::GoogleDoc),
-            _      => Err(()),
+            "markdown" => Ok(DocumentType::Markdown),
+            "googledoc" => Ok(DocumentType::GoogleDoc),
+            _ => Err(()),
         }
     }
 }
@@ -26,30 +26,18 @@ pub fn new_command() -> Command {
         .about("A utility for taking and publishing notes")
         .subcommand_required(true)
         .arg_required_else_help(true)
-        .subcommand(
-            Command::new("install")
-                .about("Install necessary dependencies")
-        )
+        .subcommand(Command::new("install").about("Install necessary dependencies"))
         .subcommand(
             Command::new("create")
                 .about("Create a document")
                 .arg(arg!(<DOCUMENT_TYPE> "Type of the document"))
                 .arg(arg!(<NAME> "Document name"))
                 .arg(arg!([SLUG] "(Optional) Slug to use as document URI").default_value("")) // TODO: no default value?
-                .arg_required_else_help(true)
+                .arg_required_else_help(true),
         )
-        .subcommand(
-            Command::new("serve")
-                .about("Serve rendered documents")
-        )
-        .subcommand(
-            Command::new("render")
-                .about("Render documents")
-        )
-        .subcommand(
-            Command::new("watch")
-                .about("Watch for content changes, then render them")
-        )
+        .subcommand(Command::new("serve").about("Serve rendered documents"))
+        .subcommand(Command::new("render").about("Render documents"))
+        .subcommand(Command::new("watch").about("Watch for content changes, then render them"))
 }
 
 use os_info;

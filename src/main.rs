@@ -8,7 +8,11 @@ fn main() {
             komet::install();
         }
         Some(("create", sub_matches)) => {
-            let doctype = komet::DocumentType::from_str(sub_matches.get_one::<String>("DOCUMENT_TYPE").expect("required"));
+            let doctype = komet::DocumentType::from_str(
+                sub_matches
+                    .get_one::<String>("DOCUMENT_TYPE")
+                    .expect("required"),
+            );
             let name = sub_matches.get_one::<String>("NAME").expect("required");
             let slug = sub_matches.get_one::<String>("SLUG").expect("required"); // TODO: get from name
             komet::create(doctype.expect(""), name, slug);
