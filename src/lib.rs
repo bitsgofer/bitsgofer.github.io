@@ -40,27 +40,8 @@ pub fn new_command() -> Command {
         .subcommand(Command::new("watch").about("Watch for content changes, then render them"))
 }
 
-use os_info;
 mod install;
-/// Install required dependencies.
-pub fn install() {
-    let info = os_info::get();
-    let os_type = info.os_type();
-    let arch = info.architecture();
-
-    let system = (os_type, arch);
-    match system {
-        (os_info::Type::Ubuntu, Some("x86_64")) | (os_info::Type::Debian, Some("x86_64")) => {
-            install::install_dependencies().expect("cannot install pandoc");
-        }
-        _ => {
-            println!(
-                "The current system (OS= {:?}, architecture= {:?}) is not supported",
-                os_type, arch
-            );
-        }
-    }
-}
+pub use install::install;
 
 /// Create a document.
 pub fn create(doctype: DocumentType, name: &str, slug: &str) {
