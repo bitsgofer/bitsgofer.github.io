@@ -20,8 +20,11 @@ fn main() {
             let bind_addr = sub_matches.get_one::<String>("bind_addr").unwrap();
             komet::serve(web_dir, bind_addr);
         }
-        Some(("render", _)) => {
-            komet::render();
+        Some(("render", sub_matches)) => {
+            let content_dir = sub_matches.get_one::<String>("content_dir").unwrap();
+            let theme_name = sub_matches.get_one::<String>("theme_name").unwrap();
+            let web_dir = sub_matches.get_one::<String>("web_dir").unwrap();
+            komet::render(content_dir, theme_name, web_dir);
         }
         Some(("watch", _)) => {
             komet::watch();

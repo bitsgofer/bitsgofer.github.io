@@ -42,7 +42,6 @@ pub fn new_command() -> Command {
             )
             .arg_required_else_help(true)
         )
-        .subcommand(Command::new("render").about("Render documents"))
         .subcommand(Command::new("watch").about("Watch for content changes, then render them"))
         .subcommand(Command::new("serve")
             .about("Serve rendered content")
@@ -55,17 +54,30 @@ pub fn new_command() -> Command {
                     .default_value("127.0.0.1:7777")
             )
         )
+        .subcommand(Command::new("render")
+            .about("Render documents")
+            .arg(
+                arg!(content_dir: --content [CONTENT_DIR] "Directory with content")
+                    .default_value("content")
+            )
+            .arg(
+                arg!(theme_name: --theme [THEME] "Name of theme")
+                    .default_value("bitsgofer-studio")
+                    .value_parser(["bitsgofer-studio"]) // TODO (use underscore)
+            )
+            .arg(
+                arg!(web_dir: --web [WEB_DIR] "Directory of rendered content")
+                    .default_value("_html")
+            )
+        )
 }
 
 mod install;
 pub use install::install;
-
-/// Render content.
-pub fn render() {
-    println!("Render content and prepare assets");
-}
 mod serve;
 pub use serve::serve;
+mod render;
+pub use render::render;
 mod create;
 pub use create::create;
 
