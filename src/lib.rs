@@ -26,7 +26,9 @@ pub fn new_command() -> Command {
         .about("A utility for taking and publishing notes")
         .subcommand_required(true)
         .arg_required_else_help(true)
-        .subcommand(Command::new("install").about("Install necessary dependencies"))
+        .subcommand(Command::new("install")
+            .about("Install necessary dependencies")
+        )
         .subcommand(Command::new("create")
             .about("Create a document")
             .arg(
