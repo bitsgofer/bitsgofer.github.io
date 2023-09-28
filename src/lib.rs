@@ -63,8 +63,8 @@ pub fn new_command() -> Command {
             )
             .arg(
                 arg!(theme_name: --theme [THEME] "Name of theme")
-                    .default_value("bitsgofer-studio")
-                    .value_parser(["bitsgofer-studio"]) // TODO (use underscore)
+                    .default_value("personal_balance")
+                    .value_parser(["personal_balance", "indie_studio"])
             )
             .arg(
                 arg!(web_dir: --web [WEB_DIR] "Directory of rendered content")
