@@ -27,13 +27,20 @@ pub fn new_command() -> Command {
         .subcommand_required(true)
         .arg_required_else_help(true)
         .subcommand(Command::new("install").about("Install necessary dependencies"))
-        .subcommand(
-            Command::new("create")
-                .about("Create a document")
-                .arg(arg!(<DOCUMENT_TYPE> "Type of the document"))
-                .arg(arg!(<NAME> "Document name"))
-                .arg(arg!([SLUG] "(Optional) Slug to use as document URI").default_value("")) // TODO: no default value?
-                .arg_required_else_help(true),
+        .subcommand(Command::new("create")
+            .about("Create a document")
+            .arg(
+                arg!(document_type: <DOCUMENT_TYPE> "Type of the document")
+                    .value_parser(["markdown", "googledoc"])
+            )
+            .arg(
+                arg!(name: <NAME> "Name of document")
+            )
+            .arg(
+                arg!(slug: --slug [SLUG] "Slug to use as document URI")
+                    .default_value("")
+            )
+            .arg_required_else_help(true)
         )
         .subcommand(Command::new("serve").about("Serve rendered documents"))
         .subcommand(Command::new("render").about("Render documents"))
@@ -42,14 +49,6 @@ pub fn new_command() -> Command {
 
 mod install;
 pub use install::install;
-
-/// Create a document.
-pub fn create(doctype: DocumentType, name: &str, slug: &str) {
-    println!(
-        "Creating new {:?} with name={} (slug={})",
-        doctype, name, slug
-    );
-}
 
 /// Serve rendered content.
 pub fn serve() {
@@ -60,6 +59,8 @@ pub fn serve() {
 pub fn render() {
     println!("Render content and prepare assets");
 }
+mod create;
+pub use create::create;
 
 /// Serve rendered content, then watch for changes and re-render.
 pub fn watch() {
