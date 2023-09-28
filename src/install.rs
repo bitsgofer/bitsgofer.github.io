@@ -120,7 +120,7 @@ pub fn install() {
     let system = (os_type, arch);
     match system {
         (os_info::Type::Ubuntu, Some("x86_64")) | (os_info::Type::Debian, Some("x86_64")) => {
-            install_dependencies().expect("cannot install pandoc");
+            install_debian_amd64().expect("cannot install pandoc");
         }
         _ => {
             println!(
@@ -131,7 +131,7 @@ pub fn install() {
     }
 }
 
-fn install_dependencies() -> Result<(), Box<dyn std::error::Error>> {
+fn install_debian_amd64() -> Result<(), Box<dyn std::error::Error>> {
     match install_pandoc() {
         Ok(_) => (),
         Err(e) => {
