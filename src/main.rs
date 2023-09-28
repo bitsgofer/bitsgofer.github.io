@@ -15,8 +15,10 @@ fn main() {
             let slug = if slug_opt != "" { slug_opt } else { name };
             komet::create(doctype, name, slug);
         }
-        Some(("serve", _)) => {
-            komet::serve();
+        Some(("serve", sub_matches)) => {
+            let web_dir = sub_matches.get_one::<String>("web_dir").unwrap();
+            let bind_addr = sub_matches.get_one::<String>("bind_addr").unwrap();
+            komet::serve(web_dir, bind_addr);
         }
         Some(("render", _)) => {
             komet::render();

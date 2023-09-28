@@ -42,23 +42,30 @@ pub fn new_command() -> Command {
             )
             .arg_required_else_help(true)
         )
-        .subcommand(Command::new("serve").about("Serve rendered documents"))
         .subcommand(Command::new("render").about("Render documents"))
         .subcommand(Command::new("watch").about("Watch for content changes, then render them"))
+        .subcommand(Command::new("serve")
+            .about("Serve rendered content")
+            .arg(
+                arg!(web_dir: --web [WEB_DIR] "Directory of rendered content")
+                    .default_value("_html")
+            )
+            .arg(
+                arg!(bind_addr: --addr [BIND_ADDR] "Bind address (e.g: <IP:PORT>) for the server")
+                    .default_value("127.0.0.1:7777")
+            )
+        )
 }
 
 mod install;
 pub use install::install;
 
-/// Serve rendered content.
-pub fn serve() {
-    println!("Run web server");
-}
-
 /// Render content.
 pub fn render() {
     println!("Render content and prepare assets");
 }
+mod serve;
+pub use serve::serve;
 mod create;
 pub use create::create;
 
