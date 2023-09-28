@@ -44,7 +44,6 @@ pub fn new_command() -> Command {
             )
             .arg_required_else_help(true)
         )
-        .subcommand(Command::new("watch").about("Watch for content changes, then render them"))
         .subcommand(Command::new("serve")
             .about("Serve rendered content")
             .arg(
@@ -71,6 +70,9 @@ pub fn new_command() -> Command {
                 arg!(web_dir: --web [WEB_DIR] "Directory of rendered content")
                     .default_value("_html")
             )
+        )
+        .subcommand(Command::new("watch")
+            .about("Watch for content changes, then render them")
         )
 }
 
