@@ -1,0 +1,129 @@
+/* Base layout: stacking .header -> .main -> .footer */
+/*----------------------------------------------------------------------------*/
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+
+	.wrapper {
+		overflow-x: hidden; /* Allow content to actually fill 100% width */
+
+		.header {
+			min-height: var(--header-height);
+		}
+
+		.main {
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: auto;
+		}
+
+		.footer {
+			min-height: var(--footer-height);
+		}
+	}
+}
+
+/* Navigation bar style (all device sizes) */
+.header {
+	.container {
+		display: grid;
+		place-items: center;
+
+		& nav {
+			display: flex;
+
+			& ul.nav-list {
+				& li {
+					padding: 1rem;
+				}
+			}
+		}
+
+		#header-nav-toggle { /* Checkbox */
+			display: none;
+		}
+	}
+}
+
+/* Navigation bar: mobile 1st */
+.header {
+	display: flex;
+	flex-direction: column;
+	& nav {
+		& ul.nav-list {
+			flex-direction: column;
+			display: none;
+		}
+
+		& ul.nav-list.active {
+			display: flex;
+		}
+	}
+}
+
+/* Navigation bar: tablet and larger devices */
+@media only screen and (min-width: 768px) {
+	.header {
+		& nav {
+			& ul.nav-list {
+				display: flex;
+				flex-direction: row;
+			}
+		}
+
+		.header-nav-toggle {
+			display: none;
+		}
+	}
+}
+
+
+
+/******************************************************************************/
+
+/* Grid system */
+/*----------------------------------------------------------------------------*/
+.container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--viewport-edge-padding); /* space from the edges of the viewport */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
+    margin-right: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
+	width: 100%; /* Fit inside its .container */
+
+	[class*="col-"] {
+	    padding-left: calc(var(--gutter-width)/2); /* Half the gutter width */
+	    padding-right: calc(var(--gutter-width)/2); /* Half the gutter width */
+	    flex-grow: 1; /* Ensures columns can grow */
+	    flex-shrink: 1; /* Ensures columns can shrink */
+	    max-width: 100%; /* Ensures columns can't grow more than container width */
+	}
+
+	.col-01 { flex-basis: 008.33%; }
+	.col-02 { flex-basis: 016.67%; }
+	.col-03 { flex-basis: 025.00%; }
+	.col-04 { flex-basis: 033.33%; }
+	.col-05 { flex-basis: 041.67%; }
+	.col-06 { flex-basis: 050.00%; }
+	.col-07 { flex-basis: 058.33%; }
+	.col-08 { flex-basis: 066.67%; }
+	.col-09 { flex-basis: 075.00%; }
+	.col-10 { flex-basis: 083.33%; }
+	.col-11 { flex-basis: 091.67%; }
+	.col-12 { flex-basis: 100.00%; }
+}
+}
+
+
+
+/******************************************************************************/

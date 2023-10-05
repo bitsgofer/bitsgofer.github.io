@@ -1,0 +1,133 @@
+/* Text */
+/*----------------------------------------------------------------------------*/
+strong {
+	font-weight: extra-bold;
+}
+
+em {
+	font-style: oblique;
+}
+
+p {
+	font-family: var(--text-font);
+	color: var(--content-color);
+	font-size: 1rem;
+	line-height: 1.3rem;
+}
+
+a {
+	color: var(--hyperlink-color);
+	&:hover {
+		color: var(--hyperlink-color);
+	}
+
+	&:visited {
+		color: var(--hyperlink-color);
+	}
+}
+
+.wrapper {
+	/* Need these styles to be more specific than default user-agent CSS */
+	& h1, h2, h3, h4, h5, h6 {
+		font-family: var(--header-font);
+		font-weight: 500;
+		color: var(--content-color);
+	}
+
+	& h6 { font-size: 1.2rem; padding: 0.8rem 0; };
+	& h5 { font-size: 1.5rem; padding: 1.0rem 0; };
+	& h4 { font-size: 2.0rem; padding: 1.2rem 0; };
+	& h3 { font-size: 2.5rem; padding: 1.5rem 0; };
+	& h2 { font-size: 3.0rem; padding: 2.0rem 0; };
+	& h1 { font-size: 3.5rem; padding: 2.5rem 0; };
+}
+/******************************************************************************/
+
+/* Image and Videos */
+/*----------------------------------------------------------------------------*/
+img {
+	max-width: 100%;
+	/* Center image */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+figure {
+	padding: 1rem 0;
+	& figcaption {
+		font-family: var(--code-font);
+		color: var(--content-color);
+		text-align: center;
+		padding-top: 0.5rem;
+	}
+}
+/******************************************************************************/
+
+/* Theme */
+/*----------------------------------------------------------------------------*/
+.header {
+	background-color: var(--header-background-color);
+
+	& ul {
+		list-style-type: none;
+
+		& li {
+			text-align: center;
+			font-family: var(--code-font);
+			font-weight: bold;
+
+			& a {
+				text-decoration: none;
+				color: var(--header-color);
+			}
+
+			&:hover {
+				background-color: var(--content-color);
+
+				& a {
+					color: var(--header-background-color);
+				}
+			}
+		}
+
+		& li.logo {
+			& a {
+				font-family: var(--header-font);
+				font-weight: 1000;
+			}
+		}
+	}
+
+	.header-nav-toggle {
+		font-size: 3rem;
+		color: var(--header-color);
+	}
+}
+
+body {
+	background-color: var(--background-color);
+
+	.main {
+		background-color: var(--main-background-color);
+		padding: 2rem 1rem;
+	}
+}
+
+.footer {
+	min-height: var(--footer-min-height);
+	background-color: yellow;
+
+	.copyright {
+		text-align: center;
+	}
+
+	.logo {
+		height: 2rem;
+		/* Center */
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+/******************************************************************************/
