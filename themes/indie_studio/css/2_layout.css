@@ -6,11 +6,21 @@ html, body {
 }
 
 body {
+	min-height: 100%; /* Fill the viewport's height */
+
+	/* Is a flexbox for its children */
 	display: flex;
 	flex-direction: column;
-	min-height: 100%;
 
 	.wrapper {
+		/* Fill the height of its parent */
+		flex-grow: 1;
+		flex-shrink: 1;
+
+		/* Is also a flexbox for its children */
+		display: flex;
+		flex-direction: column;
+
 		overflow-x: hidden; /* Allow content to actually fill 100% width */
 
 		.header {
@@ -24,7 +34,11 @@ body {
 		}
 
 		.footer {
-			min-height: var(--footer-height);
+			min-height: var(--footer-min-height);
+
+			.container {
+				padding: 1rem 0;
+			}
 		}
 	}
 }

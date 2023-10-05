@@ -115,8 +115,7 @@ body {
 }
 
 .footer {
-	min-height: var(--footer-min-height);
-	background-color: yellow;
+	background-color: var(--footer-background-color);
 
 	.copyright {
 		text-align: center;

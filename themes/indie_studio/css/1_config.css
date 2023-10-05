@@ -2,7 +2,7 @@
 /*----------------------------------------------------------------------------*/
 :root {
 	/* Layout */
-	--footer-min-height: 3rem;
+	--footer-min-height: 5rem;
 	--max-content-width: 1200px;
 	--viewport-edges-padding: 0 20px; /* pad left & right for readability */
 
@@ -79,11 +79,13 @@
 	--main-background-color: var(--zughy-11);
 	--content-color: var(--solarized-dark-base3);
 	--header-color: var(--solarized-dark-base3);
+	--footer-color: var(--solarized-dark-base3);
 	--code-block-background-color: var(--solarized-dark-base03);
 	--code-block-color: var(--solarized-dark-base0);
 	--inline-code-background-color: var(--zughy-21);
 	--inline-code-color: var(--zughy-25);
 	--header-background-color: var(--zughy-01);
+	--footer-background-color: var(--zughy-01);
 	--hyperlink-color: var(--zughy-18);
 }
 /******************************************************************************/
