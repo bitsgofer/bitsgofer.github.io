@@ -13,6 +13,8 @@ p {
 	color: var(--content-color);
 	font-size: 1rem;
 	line-height: 1.3rem;
+
+	margin-bottom: 1rem; /* Separate different paragraphs */
 }
 
 a {
