@@ -34,8 +34,6 @@ body {
 		}
 
 		.footer {
-			min-height: var(--footer-min-height);
-
 			.container {
 				padding: 1rem 0;
 			}
