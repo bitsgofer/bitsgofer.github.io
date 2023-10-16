@@ -123,6 +123,17 @@ body {
 .footer {
 	background-color: var(--footer-background-color);
 
+	& ul {
+		& li {
+			text-align: center;
+
+			padding: 0.2rem 0;
+			& a {
+				text-decoration: none;
+			}
+		}
+	}
+
 	.copyright {
 		text-align: center;
 	}
@@ -131,7 +142,7 @@ body {
 		height: 2rem;
 		/* Center */
 		display: block;
-		margin: 0 auto;
+		margin: 1rem auto 0 auto;
 	}
 }
 
