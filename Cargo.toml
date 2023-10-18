@@ -11,3 +11,4 @@ reqwest = { version = "0.11.20", features = ["blocking"] }
 os_info = { version = "3.7.0" }
 tempfile = { version = "3.8.0" }
 home = { version = "0.5.5" }
+walkdir = { version = "2.4.0" }
