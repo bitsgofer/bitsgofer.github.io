@@ -16,13 +16,13 @@ ${MINIFY}:
 MARKDOWN_FILES := $(shell find ./content -type f -name '*.md')
 HTML_FILES := $(patsubst ./content/%/README.md, ./_html/%/index.html, $(MARKDOWN_FILES))
 
-THEME_CSS_FILES := $(shell find ./themes/indie_studio -type f -name '*.css' | sort)
-THEME_JS_FILES := $(shell find ./themes/indie_studio -type f -name '*.js')
+THEME_CSS_FILES := $(shell find ./themes/personal_balance -type f -name '*.css' | sort)
+THEME_JS_FILES := $(shell find ./themes/personal_balance -type f -name '*.js')
 
-THEME_SVG_FILES := $(shell find ./themes/indie_studio -type f -name '*.svg')
-SVG_FILES := $(patsubst ./themes/indie_studio/images/%.svg, ./_html/images/%.svg, $(THEME_SVG_FILES))
+THEME_SVG_FILES := $(shell find ./themes/personal_balance -type f -name '*.svg')
+SVG_FILES := $(patsubst ./themes/personal_balance/images/%.svg, ./_html/images/%.svg, $(THEME_SVG_FILES))
 
-THEME=themes/indie_studio
+THEME=themes/personal_balance
 
 HTML_FOLDER=./_html
 _html/%/index.html: content/%/README.md
@@ -32,12 +32,12 @@ _html/%/index.html: content/%/README.md
 		--output ${@} \
 		--metadata current-date=$(shell date +"%Y-%b-%d") \
 		--metadata last-modified-date=$(shell date -d "$(stat -c %y ${<})" +"%Y-%b-%d") \
-		--lua-filter themes/indie_studio/pandoc/lua-filters/date-format.lua \
+		--lua-filter themes/personal_balance/pandoc/lua-filters/date-format.lua \
 		--template ${THEME}/templates/page.html \
 		--highlight-style ${THEME}/pandoc/highlight-theme/solarized.theme \
 		${<}
 
-_html/images/%.svg: themes/indie_studio/images/%.svg
+_html/images/%.svg: themes/personal_balance/images/%.svg
 	mkdir -p $(dir ${@})
 	cp ${<} ${@}
 
