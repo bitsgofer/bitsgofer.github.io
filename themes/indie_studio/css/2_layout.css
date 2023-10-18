@@ -1,3 +1,41 @@
+/* Grid system */
+/*----------------------------------------------------------------------------*/
+.container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+
+	.row {
+	    display: flex;
+	    flex-wrap: wrap;
+	    margin-left: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
+	    margin-right: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
+		width: 100%; /* Fit inside its .container */
+
+		[class*="col-"] {
+		    padding-left: calc(var(--gutter-width)/2); /* Half the gutter width */
+		    padding-right: calc(var(--gutter-width)/2); /* Half the gutter width */
+		    flex-grow: 1; /* Ensures columns can grow */
+		    flex-shrink: 1; /* Ensures columns can shrink */
+		    max-width: 100%; /* Ensures columns can't grow more than container width */
+		}
+
+		.col-01 { flex-basis: 008.33%; }
+		.col-02 { flex-basis: 016.67%; }
+		.col-03 { flex-basis: 025.00%; }
+		.col-04 { flex-basis: 033.33%; }
+		.col-05 { flex-basis: 041.67%; }
+		.col-06 { flex-basis: 050.00%; }
+		.col-07 { flex-basis: 058.33%; }
+		.col-08 { flex-basis: 066.67%; }
+		.col-09 { flex-basis: 075.00%; }
+		.col-10 { flex-basis: 083.33%; }
+		.col-11 { flex-basis: 091.67%; }
+		.col-12 { flex-basis: 100.00%; }
+	}
+}
+
+/******************************************************************************/
+
 /* Base layout: stacking .header -> .main -> .footer */
 /*----------------------------------------------------------------------------*/
 html, body {
@@ -31,11 +69,21 @@ body {
 			flex-grow: 1;
 			flex-shrink: 1;
 			flex-basis: auto;
+
+			/* leave space from the header */
+			padding-top: 2rem;
+			/* leave space from the edges of the viewport */
+    		padding-left: var(--viewport-edges-padding);
+    		padding-right: var(--viewport-edges-padding);
+
+			.container {
+			}
 		}
 
 		.footer {
 			.container {
-				padding: 1rem 0;
+			/* leave space from the header */
+			margin-top: 2rem;
 			}
 		}
 	}
@@ -93,47 +141,6 @@ body {
 			display: none;
 		}
 	}
-}
-
-
-
-/******************************************************************************/
-
-/* Grid system */
-/*----------------------------------------------------------------------------*/
-.container {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: var(--viewport-edge-padding); /* space from the edges of the viewport */
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
-    margin-right: calc(-1 * var(--gutter-width)/2); /* Half the gutter width to counteract column padding */
-	width: 100%; /* Fit inside its .container */
-
-	[class*="col-"] {
-	    padding-left: calc(var(--gutter-width)/2); /* Half the gutter width */
-	    padding-right: calc(var(--gutter-width)/2); /* Half the gutter width */
-	    flex-grow: 1; /* Ensures columns can grow */
-	    flex-shrink: 1; /* Ensures columns can shrink */
-	    max-width: 100%; /* Ensures columns can't grow more than container width */
-	}
-
-	.col-01 { flex-basis: 008.33%; }
-	.col-02 { flex-basis: 016.67%; }
-	.col-03 { flex-basis: 025.00%; }
-	.col-04 { flex-basis: 033.33%; }
-	.col-05 { flex-basis: 041.67%; }
-	.col-06 { flex-basis: 050.00%; }
-	.col-07 { flex-basis: 058.33%; }
-	.col-08 { flex-basis: 066.67%; }
-	.col-09 { flex-basis: 075.00%; }
-	.col-10 { flex-basis: 083.33%; }
-	.col-11 { flex-basis: 091.67%; }
-	.col-12 { flex-basis: 100.00%; }
-}
 }
 
 

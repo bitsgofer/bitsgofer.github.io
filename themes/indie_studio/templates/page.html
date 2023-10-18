@@ -10,7 +10,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Nunito:ital,wght@0,600;0,700;0,800;0,1000;1,900&family=Roboto+Mono&family=Source+Code+Pro&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="/css/theme.css">
+
+	<!-- metadata -->
     <title>$title$</title>
+$for(author-meta)$
+	<meta name="author" content="$author-meta$" />
+$endfor$
+	<!-- metadata -->
 </head>
 <body>
 <div class="wrapper">
@@ -31,10 +37,26 @@
 	</div>
 </header>
 
-<div class="main container">
-    <div class="row">
-		<article class="col-12">$body$</article>
-    </div>
+<div class="main">
+	<div class="container">
+    	<div class="row">
+			<article class="col-12">
+				<div class="article-metadata">
+					<h1>$title$</h1>
+
+					<p><b>Authors</b>: $for(author)$$author$, $endfor$</p>
+
+					$if(date-meta)$<p><b>Written on</b>: $date-meta$</p>$endif$
+					$if(last-modified-date)$<p><b>Updated on</b>: $last-modified-date$</p>$endif$
+					<hr/>
+				</div>
+
+				<div class="content">
+					$body$
+				</div>
+			</article>
+    	</div>
+	</div>
 </div>
 
 <footer class="footer">

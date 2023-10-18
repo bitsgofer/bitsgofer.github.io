@@ -1,7 +1,7 @@
 /* Text */
 /*----------------------------------------------------------------------------*/
-strong {
-	font-weight: extra-bold;
+b, strong {
+	font-weight: bold;
 }
 
 em {
@@ -14,7 +14,7 @@ p {
 	font-size: 1rem;
 	line-height: 1.3rem;
 
-	margin-bottom: 1rem; /* Separate different paragraphs */
+	padding-bottom: 1rem; /* Separate different paragraphs */
 }
 
 a {
@@ -36,15 +36,27 @@ a {
 		color: var(--content-color);
 	}
 
-	& h6 { font-size: 1.2rem; padding: 0.8rem 0; };
-	& h5 { font-size: 1.5rem; padding: 1.0rem 0; };
-	& h4 { font-size: 2.0rem; padding: 1.2rem 0; };
-	& h3 { font-size: 2.5rem; padding: 1.5rem 0; };
-	& h2 { font-size: 3.0rem; padding: 2.0rem 0; };
-	& h1 { font-size: 3.5rem; padding: 2.5rem 0; };
+	& h6 { font-size: 1.2rem; padding: 0 0 0.8rem 0; };
+	& h5 { font-size: 1.5rem; padding: 0 0 1.0rem 0; };
+	& h4 { font-size: 2.0rem; padding: 0 0 1.2rem 0; };
+	& h3 { font-size: 2.5rem; padding: 0 0 1.5rem 0; };
+	& h2 { font-size: 3.0rem; padding: 0 0 2.0rem 0; };
+	& h1 { font-size: 3.5rem; padding: 0 0 2.5rem 0; };
 
 	& h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 		text-decoration: none;
+	}
+}
+
+.article-metadata {
+	padding-bottom: 2rem;
+
+	& p {
+		padding-bottom: 0.2rem;
+	}
+
+	& h1 {
+		padding-bottom: 1rem;
 	}
 }
 /******************************************************************************/
@@ -116,7 +128,6 @@ body {
 
 	.main {
 		background-color: var(--main-background-color);
-		padding: 2rem 1rem;
 	}
 }
 

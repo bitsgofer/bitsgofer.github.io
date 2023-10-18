@@ -32,6 +32,7 @@ _html/%/index.html: content/%/README.md
 		--output ${@} \
 		--metadata=current-date=$(shell date +"%Y-%b-%d") \
 		--metadata=last-modified-date=$(shell date -d "$(stat -c %y ${<})" +"%Y-%b-%d") \
+		--lua-filter=themes/indie_studio/pandoc/lua-filters/date-format.lua \
 		--template=${THEME}/templates/page.html \
 		--highlight-style=${THEME}/pandoc/highlight-theme/solarized.theme \
 		${<}
