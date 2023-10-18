@@ -1,13 +1,18 @@
 ---
 layout: post
 title:  Technical bookshelf
-author: Mark
-date:   2016-04-06 00:00:00
+author:
+  - Mark
+  - exklamationmark
+date: 2016-04-06
 tags:
   - sticky
   - resources
   - books
   - papers
+blurb: |
+  Below are a list of book and papers that I found helpful for technical work
+
 ---
 
 Below are a list of *books/papers that I found helpful* for `programming/technical` work:
