@@ -73,6 +73,19 @@ pub fn new_command() -> Command {
         )
         .subcommand(Command::new("watch")
             .about("Watch for content changes, then render them")
+            .arg(
+                arg!(content_dir: --content [CONTENT_DIR] "Directory with content")
+                    .default_value("content")
+            )
+            .arg(
+                arg!(theme_name: --theme [THEME] "Name of theme")
+                    .default_value("personal_balance")
+                    .value_parser(["personal_balance", "indie_studio"])
+            )
+            .arg(
+                arg!(web_dir: --web [WEB_DIR] "Directory of rendered content")
+                    .default_value("_html")
+            )
         )
 }
 
@@ -82,10 +95,7 @@ mod serve;
 pub use serve::serve;
 mod render;
 pub use render::render;
+mod watch;
+pub use watch::watch;
 mod create;
 pub use create::create;
-
-/// Serve rendered content, then watch for changes and re-render.
-pub fn watch() {
-    println!("Watch for content changes, then render them");
-}

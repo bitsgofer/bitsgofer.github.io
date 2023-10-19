@@ -26,8 +26,11 @@ fn main() {
             let web_dir = sub_matches.get_one::<String>("web_dir").unwrap();
             komet::render(content_dir, theme_name, web_dir);
         }
-        Some(("watch", _)) => {
-            komet::watch();
+        Some(("watch", sub_matches)) => {
+            let content_dir = sub_matches.get_one::<String>("content_dir").unwrap();
+            let theme_name = sub_matches.get_one::<String>("theme_name").unwrap();
+            let web_dir = sub_matches.get_one::<String>("web_dir").unwrap();
+            komet::watch(content_dir, theme_name, web_dir);
         }
         _ => unreachable!(),
     }
