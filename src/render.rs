@@ -5,17 +5,17 @@ pub fn render(content_dir: &str, theme_name: &str, web_dir: &str) {
         theme_name, content_dir, web_dir
     );
 
+    // use pandoc to render HTML pages
+    my_theme_render_markdown(content_dir, web_dir);
+
+    // render theme
     let mut theme_dir = PathBuf::from("themes");
     theme_dir.push(theme_name);
     let theme_dir = theme_dir.to_str().unwrap();
-
     render_my_theme(theme_dir, content_dir, web_dir);
 }
 
 pub fn render_my_theme(theme_dir: &str, content_dir: &str, web_dir: &str) {
-    // use pandoc to render HTML pages
-    my_theme_render_markdown(content_dir, web_dir);
-
     // create CSS assets
     let minified_css: PathBuf = [web_dir, "css", "theme.css"].iter().collect();
     match my_theme_minify_assets("css", theme_dir, minified_css.to_str().unwrap()) {
@@ -36,7 +36,7 @@ pub fn render_my_theme(theme_dir: &str, content_dir: &str, web_dir: &str) {
     match my_theme_copy_images("svg", theme_dir, web_dir) {
         Ok(_) => (),
         Err(e) => {
-            eprintln!("cannot minify {} files; err= {}", "svg", e);
+            eprintln!("cannot copy {} files; err= {}", "svg", e);
         }
     }
     return;
@@ -148,7 +148,6 @@ fn my_theme_copy_images(
     let extension = file_type;
 
     // collect files matching extensions so we can minify them
-    let mut result: Vec<String> = Vec::new();
     for entry in WalkDir::new(theme_dir).into_iter().filter_map(|e| e.ok()) {
         let path = entry.path();
 

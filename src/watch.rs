@@ -28,6 +28,7 @@ fn watch_content_dir(content_dir: &str, theme_name: &str, web_dir: &str) -> noti
         match res {
             Ok(event) => match event.kind {
                 EventKind::Modify(ModifyKind::Data(_)) => {
+                    // TODO(): inefficiently re-render everything
                     render::render(content_dir, theme_name, web_dir);
                     println!("Rendered: {:#?}", event.paths);
                 }
