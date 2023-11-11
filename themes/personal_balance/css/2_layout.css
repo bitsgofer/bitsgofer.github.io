@@ -115,6 +115,7 @@ body {
 .header {
 	display: flex;
 	flex-direction: column;
+
 	& nav {
 		& ul.nav-list {
 			flex-direction: column;

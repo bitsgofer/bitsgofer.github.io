@@ -6,8 +6,8 @@ p code { /* Inline code */
 	color: var(--inline-code-color);
 }
 
-
-pre.sourceCode { /* Code block */
+/* Code block (languages supported by Pandoc) */
+pre.sourceCode {
 	& code.sourceCode {
 		font-family: var(--code-font);
 
@@ -15,10 +15,25 @@ pre.sourceCode { /* Code block */
 		overflow-wrap: break-word;
 	}
 }
-
 div.sourceCode > pre.sourceCode {
 	padding: 1em;
 }
+
+/* Code block (no languages) */
+pre {
+	padding: 1em;
+	color: var(--code-block-color);
+	background-color: var(--code-block-background-color);
+	overflow: auto;
+
+	& code {
+		font-family: var(--code-font);
+
+		hyphens: manual;
+		overflow-wrap: break-word;
+	}
+}
+
 /*----------------------------------------------------------------------------*/
 /* Edited from (pandoc --print-highlight-style=pygments) */
 /*----------------------------------------------------------------------------*/
