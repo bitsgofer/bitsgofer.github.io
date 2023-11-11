@@ -17,10 +17,13 @@ p, ul, ol {
 
 /* Separate different sections */
 .main {
-	& p + p, p + ol, p + ul,
+	& p + p, ul + p, ol + p,
+	p + ol, p + ul,
 	p + h1, p + h2, p + h3, p + h4, p + h5, p + h6,
 	ul + h1, ul + h2, ul + h3, ul + h4, ul + h5, ul + h6,
 	ol + h1, ol + h2, ol + h3, ol + h4, ol + h5, ol + h6,
+	blockquote + h1, blockquote + h2, blockquote + h3, blockquote + h4, blockquote + h5, blockquote + h6,
+	p + blockquote,
 	pre + h1, pre + h2, pre + h3, pre + h4, pre + h5, pre + h6 {
 		margin-top: 2rem; /* Separate different paragraphs */
 	}
@@ -39,6 +42,13 @@ p, ul, ol {
 	}
 	& li + li {
 		margin-top: 0.5rem;
+	}
+
+	& blockquote {
+		padding-left: 1rem;
+		border-left-style: solid;
+		border-left-color: var(--solarized-dark-cyan);
+		border-left-width: 0.3rem;
 	}
 }
 
