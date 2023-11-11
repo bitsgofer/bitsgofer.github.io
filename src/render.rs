@@ -70,12 +70,16 @@ fn my_theme_render_markdown(content_dir: &str, web_dir: &str) {
 
 use std::process::Command;
 fn pandoc_render(markdown: &str, html: &str) -> Result<(), Box<dyn std::error::Error>> {
+    // TODO(exklamationmark): Create the folder fo the HTML, if it doesn't exist
+
     match Command::new("pandoc")
         .arg("--standalone")
         .arg("--output")
         .arg(html)
-        //  .args("--metadata", "current-date=...")
-        //  .args("--metadata", "last-modified-date=...")
+        // TODO(exklamationmark): give render-date (current date)
+        // and last-modified-date (last-modified time of the source content)
+        // .args("--metadata", "current-date=...")
+        //  .args("--metadata", "last-modified-date=...") //
         .arg("--lua-filter")
         .arg("themes/personal_balance/pandoc/lua-filters/date-format.lua")
         .arg("--template")
