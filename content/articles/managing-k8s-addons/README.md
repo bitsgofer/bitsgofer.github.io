@@ -8,7 +8,7 @@ tags:
   - kubernetes
   - devops
 blurb: |
-  How to manage addons software in Kuberentes more autonomously
+  Why managing Kubernetes addons across multiple clusters are complex.
 
 ---
 
